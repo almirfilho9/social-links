@@ -1,0 +1,41 @@
+{
+  "profile": {
+    "name": "José Almir",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/155471900?v=4",
+    "title": "Creative Developer & Designer",
+    "bio": "Building beautiful web experiences. Passionate about UI/UX and open source."
+  },
+  "links": [
+    {
+      "id": "github",
+      "title": "My GITGUB",
+      "url": "https://github.com/almirfilho9",
+      "icon": "Globe"
+    }
+  ],
+  "socials": [
+    {
+      "id": "twitter",
+      "url": "https://twitter.com/almirfilho9",
+      "icon": "Twitter"
+    },
+    {
+      "id": "linkedin",
+      "url": "https://linkedin.com/in/almirfilho9",
+      "icon": "Linkedin"
+    },
+    {
+      "id": "instagram",
+      "url": "https://instagram.com/almirfilho9",
+      "icon": "Instagram"
+    }
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#4f46e5",
+      "background": "#0f172a",
+      "text": "#f8fafc",
+      "cardBg": "rgba(30, 41, 59, 0.7)"
+    }
+  }
+}
