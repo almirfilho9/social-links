@@ -3,11 +3,21 @@
     <ProfileHeader v-if="data.profile" :profile="data.profile" />
 
     <div class="links-container" v-if="data.links && data.links.length > 0">
-      <LinkButton v-for="link in data.links" :key="link.id" :link="link" />
+      <LinkButton
+        v-for="(link, index) in data.links"
+        :key="link.id"
+        :link="link"
+        :style="{ '--stagger-index': index }"
+      />
     </div>
 
     <div class="socials-container" v-if="data.socials && data.socials.length > 0">
-      <SocialIcon v-for="social in data.socials" :key="social.id" :social="social" />
+      <SocialIcon
+        v-for="(social, index) in data.socials"
+        :key="social.id"
+        :social="social"
+        :style="{ '--stagger-index': index }"
+      />
     </div>
   </main>
 </template>

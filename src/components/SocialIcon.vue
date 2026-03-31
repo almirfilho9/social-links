@@ -40,6 +40,9 @@ const iconComponent = computed(() => {
   border: 1px solid var(--card-border);
   color: var(--text-main);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInScale 0.4s ease forwards;
+  animation-delay: calc((var(--stagger-index, 0) + 3) * 0.1s);
+  opacity: 0;
 }
 
 .social-icon:hover {
@@ -53,5 +56,16 @@ const iconComponent = computed(() => {
 .icon {
   width: 20px;
   height: 20px;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>

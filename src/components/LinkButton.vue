@@ -40,6 +40,9 @@ const iconComponent = computed(() => {
   margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
+  animation: slideIn 0.5s ease forwards;
+  animation-delay: calc(var(--stagger-index, 0) * 0.1s);
+  opacity: 0;
 }
 
 .link-button::before {
@@ -97,5 +100,16 @@ const iconComponent = computed(() => {
 .link-button:hover .chevron .icon-small {
   transform: translateX(4px);
   color: var(--text-main);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
