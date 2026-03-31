@@ -12,19 +12,19 @@
 
 <script setup>
 import { computed } from 'vue'
-import * as icons from 'lucide-vue-next'
 import { ChevronRight, Globe } from 'lucide-vue-next'
 
 const props = defineProps({
   link: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const iconComponent = computed(() => {
+  const iconMap = { Globe }
   if (!props.link.icon) return Globe
-  return icons[props.link.icon] || Globe
+  return iconMap[props.link.icon] || Globe
 })
 </script>
 
@@ -49,7 +49,7 @@ const iconComponent = computed(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -80,7 +80,9 @@ const iconComponent = computed(() => {
   width: 16px;
   height: 16px;
   color: var(--text-muted);
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
 .title {

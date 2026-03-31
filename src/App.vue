@@ -1,21 +1,13 @@
 <template>
   <main class="app-container">
     <ProfileHeader v-if="data.profile" :profile="data.profile" />
-    
+
     <div class="links-container" v-if="data.links && data.links.length > 0">
-      <LinkButton 
-        v-for="link in data.links" 
-        :key="link.id" 
-        :link="link" 
-      />
+      <LinkButton v-for="link in data.links" :key="link.id" :link="link" />
     </div>
 
     <div class="socials-container" v-if="data.socials && data.socials.length > 0">
-      <SocialIcon 
-        v-for="social in data.socials" 
-        :key="social.id" 
-        :social="social" 
-      />
+      <SocialIcon v-for="social in data.socials" :key="social.id" :social="social" />
     </div>
   </main>
 </template>
@@ -26,24 +18,29 @@ import profileData from './data/profile.json'
 import ProfileHeader from './components/ProfileHeader.vue'
 import LinkButton from './components/LinkButton.vue'
 import SocialIcon from './components/SocialIcon.vue'
+import { validateProfile } from './utils/validateProfile'
 
 const data = ref({})
 
 onMounted(() => {
+  const { valid, errors } = validateProfile(profileData)
+
+  if (!valid) {
+    console.warn('Profile data validation warnings:', errors)
+  }
+
   data.value = profileData
-  
+
   if (data.value.theme && data.value.theme.colors) {
     const { primary, background, text, cardBg } = data.value.theme.colors
     const root = document.documentElement
-    
+
     if (primary) root.style.setProperty('--primary-color', primary)
     if (text) root.style.setProperty('--text-main', text)
     if (cardBg) {
       root.style.setProperty('--card-bg', cardBg)
-      // Reset borders when applying custom cardBg to fit better
       root.style.setProperty('--card-border', 'rgba(255, 255, 255, 0.15)')
     }
-    // We adjust background if available, but it's fine without
     if (background) {
       root.style.setProperty('--bg-color-from', background)
       root.style.setProperty('--bg-color-to', background)

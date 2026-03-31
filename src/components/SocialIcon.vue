@@ -1,23 +1,30 @@
 <template>
-  <a :href="social.url" target="_blank" rel="noopener noreferrer" class="social-icon" :aria-label="social.id">
+  <a
+    :href="social.url"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="social-icon"
+    :aria-label="social.id"
+  >
     <component :is="iconComponent" class="icon" />
   </a>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import * as icons from 'lucide-vue-next'
-import { Link } from 'lucide-vue-next'
+import { Link, Twitter, Linkedin, Instagram, Github } from 'lucide-vue-next'
 
 const props = defineProps({
   social: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 
+const iconMap = { Link, Twitter, Linkedin, Instagram, Github }
+
 const iconComponent = computed(() => {
-  return icons[props.social.icon] || Link
+  return iconMap[props.social.icon] || Link
 })
 </script>
 
